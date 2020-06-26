@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Product Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../css/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<form action="#" th:object="${employee}" th:action="@{/employee/save}" method="get">
+		<input type= "hidden" th:field="*{id}">
+		Name : <input type= "text" th:field="*{name}"> <br>
+		<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+		User Id : <input type= "text" th:field="*{userId}"> <br>
+		<p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}"></p>
+		Password : <input type= "text" th:field="*{password}"> <br>
+		<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+		Department : 
+		<select th:field="*{department.name}">
+			<option th:each="dname:${depnames}" th:value="${dname}" th:text="${dname}"></option>
+		</select>
+		<button type="submit">Save</button>
+	</form>
+</body>
+</html>

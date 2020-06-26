@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Product List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="/webjars/bootstrap/4.0.0/css/bootstrap.css" />
+</head>
+<body>
+	<div class="container">
+		<h3>Employee Page</h3>
+		<div>
+			<a th:href="@{/employee/add}" class = "btn btn-success">Add Employee</a>
+		</div>		
+		<table class="table table-bordered table-hover" th:if="${not #lists.isEmpty(employee)}">
+			<thead class="table-active">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">User Id</th>
+					<th scope="col">Password</th>
+					<th scope="col">Department</th>
+					<th scope="col">Edit</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="ep:${employee}">
+					<td th:text=${ep.id}>Id</td>
+					<td th:text=${ep.name}>Name</td>
+					<td th:text=${ep.userId}>User Id</td>
+					<td th:text=${ep.password}>Password</td>
+					<td th:text=${ep.department.name}>Department</td>
+					<td><a href="EditProduct.html"
+						th:href="@{/employee/edit/}+${ep.id}" class="btn btn-info">Edit</a></td>
+					<td><a href="DeleteProduct.html"
+						th:href="@{/employee/delete/}+${ep.id}" class="btn btn-danger">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="/webjars/jquery/3.0.0/jquery.js"></script>
+	<script src="/webjars/bootstrap/4.0.0/js/bootstrap.js"></script>
+</body>
+</html>

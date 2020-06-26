@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Product List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="/webjars/bootstrap/4.0.0/css/bootstrap.css" />
+</head>
+<body>
+	<div class="container">
+		<h3>Course Page</h3>
+		<div>
+			<a th:href="@{/course/add}" class = "btn btn-success">Add Employee</a>
+		</div>		
+		<table class="table table-bordered table-hover" th:if="${not #lists.isEmpty(courselist)}">
+			<thead class="table-active">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">Organizer</th>
+					<th scope="col">Price</th>
+					<th scope="col">Status</th>
+					<th scope="col">Employee</th>
+					<th scope="col">fromDate</th>
+					<th scope="col">Edit</th>
+					<th scope="col">Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="course:${courselist}">
+					<td th:text=${course.id}>Id</td>
+					<td th:text=${course.name}>Name</td>
+					<td th:text=${course.organizer}>Organizer</td>
+					<td th:text=${course.price}>Price</td>
+					<td th:text=${course.status}>Status</td>
+					<td th:text=${course.employee.name}>Employee</td>
+					<td th:text="${#dates.format(course.fromDate, 'dd-MM-yyyy')}">FromDate</td>
+					<td><a href="EditProduct.html"
+						th:href="@{/course/edit/}+${course.id}" class="btn btn-info">Edit</a></td>
+					<td><a href="DeleteProduct.html"
+						th:href="@{/course/delete/}+${course.id}" class="btn btn-danger">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="/webjars/jquery/3.0.0/jquery.js"></script>
+	<script src="/webjars/bootstrap/4.0.0/js/bootstrap.js"></script>
+</body>
+</html>

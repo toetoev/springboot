@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Product List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="/webjars/bootstrap/4.0.0/css/bootstrap.css" />
+</head>
+<body>
+	<div class="container">
+		<h3>Department Page</h3>
+		<div>
+			<a th:href="@{/department/add}" class = "btn btn-success">Add Department</a>
+		</div>
+		<br>		
+		<table class="table table-bordered table-hover" th:if="${not #lists.isEmpty(dlists)}">
+			<thead class="table-active">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th colspan="2">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dp:${dlists}">
+					<td th:text=${dp.id}>Id</td>
+					<td th:text=${dp.name}>Name</td>
+					<td><a href="EditProduct.html"
+						th:href="@{/department/edit/}+${dp.id}" class="btn btn-info">Edit</a></td>
+					<td><a href="DeleteProduct.html"
+						th:href="@{/department/delete/}+${dp.id}" class="btn btn-danger">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script src="/webjars/jquery/3.0.0/jquery.js"></script>
+	<script src="/webjars/bootstrap/4.0.0/js/bootstrap.js"></script>
+</body>
+</html>

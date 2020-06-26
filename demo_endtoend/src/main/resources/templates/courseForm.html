@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Product Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../css/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<form action="#" th:object="${course}" th:action="@{/course/save}" method="get">
+		<input type= "hidden" th:field="*{id}">
+		Name : <input type= "text" th:field="*{name}"> <br>
+		<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+		Organizer : <input type= "text" th:field="*{organizer}"> <br>
+		<p th:if="${#fields.hasErrors('organizer')}" th:errors="*{organizer}"></p>
+		Price : <input type= "text" th:field="*{price}"> <br>
+		<p th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></p>
+		Employee : 
+		<select th:field="*{employee.name}">
+			<option th:each="ename:${empnames}" th:value="${ename}" th:text="${ename}"></option>
+		</select> <br>
+		FromDate : <input type= "text" th:field="*{fromDate}" placeholder="dd-MM-yyyy"> <br>
+		<p th:if="${#fields.hasErrors('fromDate')}" th:errors="*{fromDate}"></p>
+		Status :
+		<select th:field="*{status}">
+			<option th:each="status:${c_status}" th:value="${status}" th:text="${status}"></option>
+		</select>
+		<button type="submit">Save</button>
+	</form>
+</body>
+</html>

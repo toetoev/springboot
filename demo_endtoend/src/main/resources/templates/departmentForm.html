@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Product Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../css/style.css" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<form action="#" th:object="${departments}" th:action="@{/department/save}" method="get">
+		<input type= "hidden" th:field="*{id}">
+		Name : <input type= "text" th:field="*{name}"> <br>
+		<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+		<button type="submit">Save</button>
+	</form>
+</body>
+</html>
